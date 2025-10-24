@@ -35,7 +35,10 @@ public class UserInitServiceImpl implements UserInitService {
         "access_token", "accessToken", "access_key", "accessKey",
         "secret_key", "secretKey", "secret",
         "password", "passwd", "pwd",
-        "token", "appid", "app_id", "group_id", "groupId"
+        "token", "appid", "app_id", "group_id", "groupId",
+        "url", "base_url", "baseUrl", "endpoint",  // 添加URL类字段，可能包含敏感信息
+        "account", "username", "user",  // 添加账号类字段
+        "host", "server"  // 添加服务器地址类字段
     );
 
     @Override
