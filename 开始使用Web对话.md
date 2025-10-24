@@ -264,3 +264,6 @@ sudo docker compose -f docker-compose_all.yml logs --tail=50 xiaozhi-esp32-serve
 如有问题，随时查看日志或询问我！祝使用愉快！😊
 
 
+
+
+

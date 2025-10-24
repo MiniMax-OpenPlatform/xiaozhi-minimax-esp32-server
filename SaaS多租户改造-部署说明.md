@@ -354,3 +354,6 @@ sudo docker compose -f docker-compose_all.yml logs xiaozhi-esp32-server-web
 3. 参考上述的验证清单和故障排查指南
 
 
+
+
+
