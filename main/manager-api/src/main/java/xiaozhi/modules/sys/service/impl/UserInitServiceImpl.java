@@ -40,6 +40,21 @@ public class UserInitServiceImpl implements UserInitService {
         "account", "username", "user",  // 添加账号类字段
         "host", "server"  // 添加服务器地址类字段
     );
+    
+    // 新用户默认初始化的模型配置列表（model_code）
+    private static final List<String> DEFAULT_ASR_MODELS = Arrays.asList(
+        "FunASR",           // FunASR语音识别
+        "FunASRServer",     // FunASR服务器
+        "TencentASR"        // 腾讯语音识别
+    );
+    
+    private static final List<String> DEFAULT_LLM_MODELS = Arrays.asList(
+        "MinimaxLLM"        // MinimaxLLM
+    );
+    
+    private static final List<String> DEFAULT_TTS_MODELS = Arrays.asList(
+        "MinimaxStreamTTS"  // Minimax流式语音合成
+    );
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -72,10 +87,18 @@ public class UserInitServiceImpl implements UserInitService {
             return;
         }
         
-        log.info("找到 {} 个模板配置，开始复制", templateConfigs.size());
+        log.info("找到 {} 个模板配置，开始过滤并复制", templateConfigs.size());
         
         List<ModelConfigEntity> newConfigs = new ArrayList<>();
+        int filteredCount = 0;
+        
         for (ModelConfigEntity template : templateConfigs) {
+            // 过滤：只复制指定的模型配置
+            if (!shouldCopyConfig(template)) {
+                filteredCount++;
+                continue;
+            }
+            
             ModelConfigEntity newConfig = new ModelConfigEntity();
             
             // 复制基本信息
@@ -95,12 +118,57 @@ public class UserInitServiceImpl implements UserInitService {
             newConfigs.add(newConfig);
         }
         
+        log.info("过滤了 {} 个配置，将复制 {} 个配置", filteredCount, newConfigs.size());
+        
         // 批量插入
         for (ModelConfigEntity config : newConfigs) {
             modelConfigDao.insert(config);
         }
         
         log.info("成功为用户 {} 复制了 {} 个配置", userId, newConfigs.size());
+    }
+    
+    /**
+     * 判断是否应该复制该配置
+     * 只复制指定的ASR、LLM、TTS模型，以及所有其他类型的模型（Memory、VAD、Intent等）
+     */
+    private boolean shouldCopyConfig(ModelConfigEntity config) {
+        String modelType = config.getModelType();
+        String modelCode = config.getModelCode();
+        
+        if (modelType == null || modelCode == null) {
+            return false;
+        }
+        
+        // 统一转换为小写进行比较
+        String type = modelType.toLowerCase();
+        
+        switch (type) {
+            case "asr":
+                // ASR：只复制指定的模型
+                return DEFAULT_ASR_MODELS.contains(modelCode);
+                
+            case "llm":
+                // LLM：只复制指定的模型
+                return DEFAULT_LLM_MODELS.contains(modelCode);
+                
+            case "tts":
+                // TTS：只复制指定的模型
+                return DEFAULT_TTS_MODELS.contains(modelCode);
+                
+            case "memory":
+            case "vad":
+            case "intent":
+            case "vllm":
+            case "voiceprint":
+                // Memory、VAD、Intent、VLLM、Voiceprint等其他类型全部复制
+                return true;
+                
+            default:
+                // 其他未知类型也复制
+                log.warn("遇到未知模型类型: {}, modelCode: {}", modelType, modelCode);
+                return true;
+        }
     }
     
     /**

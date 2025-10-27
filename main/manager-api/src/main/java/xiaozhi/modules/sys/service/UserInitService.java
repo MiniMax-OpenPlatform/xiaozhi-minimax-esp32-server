@@ -17,3 +17,5 @@ public interface UserInitService {
     void initUserModelConfigs(Long userId);
 }
 
+
+
