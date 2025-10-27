@@ -48,9 +48,6 @@
   - 该音色经过专业调优，完美匹配小智硬件的声音特质
   - 提供自然、流畅的语音交互体验
 
-#### 3. **ASR（语音识别）增强**
-- ✅ 支持 DoubaoASR（字节跳动火山引擎）
-- ✅ 保留原有 FunASR、腾讯ASR 等多种选择
 
 ### 🔐 SaaS 多租户架构
 
@@ -104,20 +101,12 @@ api_key: 你的_MINIMAX_API_KEY
 voice_id: vc_wanwan_0303_02-wanwan_0303_01_0303_1047  # 湾湾音色
 ```
 
-**DoubaoASR 配置示例**:
-```yaml
-type: doubao
-appid: 你的_APPID
-access_token: 你的_ACCESS_TOKEN
-cluster: volcengine_input_common
-```
-
 ---
 
 ## 📂 项目结构
 
 ```
-xiaozhi-minimax-esp32-server/
+xiaozhi-esp32-server/
 ├── main/
 │   ├── xiaozhi-server/       # Python 核心服务（WebSocket、协议处理、AI集成）
 │   ├── manager-api/           # Java Spring Boot 后端 API
@@ -150,7 +139,7 @@ xiaozhi-minimax-esp32-server/
 - **AI 服务**: 
   - Minimax LLM (abab6.5s-chat)
   - Minimax TTS (speech-01-turbo)
-  - DoubaoASR / FunASR / 腾讯ASR
+  - FunASR / 腾讯ASR 等多种 ASR 选项
 - **基础设施**: Docker, MySQL, Redis, Nginx
 - **协议**: WebSocket, MQTT, UDP, MCP
 
@@ -161,7 +150,6 @@ xiaozhi-minimax-esp32-server/
 ### v1.0.0 (2025-10)
 - ✅ 集成 Minimax LLM (abab6.5s-chat)
 - ✅ 集成 Minimax TTS (speech-01-turbo) + 湾湾音色
-- ✅ 集成 DoubaoASR 语音识别
 - ✅ 实现 SaaS 多租户架构
 - ✅ 用户级配置隔离和权限控制
 - ✅ 新用户自动初始化精简配置

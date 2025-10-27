@@ -48,10 +48,6 @@ This customized version includes the following core enhancements:
   - Professionally tuned to match Xiaozhi hardware's voice characteristics
   - Natural and fluent voice interaction experience
 
-#### 3. **Enhanced ASR**
-- ✅ DoubaoASR support (ByteDance Volcano Engine)
-- ✅ Keep original FunASR, Tencent ASR and more options
-
 ### 🔐 SaaS Multi-Tenancy Architecture
 
 Complete multi-tenant isolation architecture for SaaS deployment:
@@ -104,20 +100,12 @@ api_key: YOUR_MINIMAX_API_KEY
 voice_id: vc_wanwan_0303_02-wanwan_0303_01_0303_1047  # Wanwan voice
 ```
 
-**DoubaoASR Configuration Example**:
-```yaml
-type: doubao
-appid: YOUR_APPID
-access_token: YOUR_ACCESS_TOKEN
-cluster: volcengine_input_common
-```
-
 ---
 
 ## 📂 Project Structure
 
 ```
-xiaozhi-minimax-esp32-server/
+xiaozhi-esp32-server/
 ├── main/
 │   ├── xiaozhi-server/       # Python core service (WebSocket, protocol, AI integration)
 │   ├── manager-api/           # Java Spring Boot backend API
@@ -150,7 +138,7 @@ Using this voice provides the same voice experience as the original Xiaozhi hard
 - **AI Services**: 
   - Minimax LLM (abab6.5s-chat)
   - Minimax TTS (speech-01-turbo)
-  - DoubaoASR / FunASR / Tencent ASR
+  - FunASR / Tencent ASR and more ASR options
 - **Infrastructure**: Docker, MySQL, Redis, Nginx
 - **Protocols**: WebSocket, MQTT, UDP, MCP
 
@@ -161,7 +149,6 @@ Using this voice provides the same voice experience as the original Xiaozhi hard
 ### v1.0.0 (2025-10)
 - ✅ Integrated Minimax LLM (abab6.5s-chat)
 - ✅ Integrated Minimax TTS (speech-01-turbo) + Wanwan voice
-- ✅ Integrated DoubaoASR speech recognition
 - ✅ Implemented SaaS multi-tenancy architecture
 - ✅ User-level configuration isolation and permission control
 - ✅ Auto initialization with simplified configuration for new users
