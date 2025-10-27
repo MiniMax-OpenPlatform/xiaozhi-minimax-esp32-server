@@ -1,10 +1,10 @@
-# 小智后端服务 - Minimax定制版
+# xiaozhi-minimax-esp32-server
 
 <p align="center">
   <img src="docs/images/banner1.png" alt="Banner" />
 </p>
 
-<h2 align="center">基于小智ESP32服务器的Minimax AI集成版本</h2>
+<h2 align="center">小智后端服务 - Minimax AI 深度集成版</h2>
 
 <p align="center">
   <a href="./README_en.md">English</a> · 
@@ -117,7 +117,7 @@ cluster: volcengine_input_common
 ## 📂 项目结构
 
 ```
-xiaozhi-esp32-server/
+xiaozhi-minimax-esp32-server/
 ├── main/
 │   ├── xiaozhi-server/       # Python 核心服务（WebSocket、协议处理、AI集成）
 │   ├── manager-api/           # Java Spring Boot 后端 API

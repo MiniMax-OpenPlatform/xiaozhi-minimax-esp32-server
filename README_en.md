@@ -1,10 +1,10 @@
-# Xiaozhi Server - Minimax Edition
+# xiaozhi-minimax-esp32-server
 
 <p align="center">
   <img src="docs/images/banner1.png" alt="Banner" />
 </p>
 
-<h2 align="center">Minimax AI Integrated Version Based on Xiaozhi ESP32 Server</h2>
+<h2 align="center">Xiaozhi ESP32 Server - Minimax AI Deep Integration</h2>
 
 <p align="center">
   <a href="./README.md">中文</a> · 
@@ -117,7 +117,7 @@ cluster: volcengine_input_common
 ## 📂 Project Structure
 
 ```
-xiaozhi-esp32-server/
+xiaozhi-minimax-esp32-server/
 ├── main/
 │   ├── xiaozhi-server/       # Python core service (WebSocket, protocol, AI integration)
 │   ├── manager-api/           # Java Spring Boot backend API
