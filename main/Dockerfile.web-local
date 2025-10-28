@@ -10,6 +10,9 @@ COPY manager-api/target/xiaozhi-esp32-api.jar /app/xiaozhi-esp32-api.jar
 # 复制编译好的前端静态文件到Nginx正确的位置
 COPY manager-web/dist/ /usr/share/nginx/html/
 
+# 复制自定义Nginx配置（支持测试页面访问）
+COPY nginx-custom.conf /etc/nginx/nginx.conf
+
 # 暴露端口
 EXPOSE 8002
 
