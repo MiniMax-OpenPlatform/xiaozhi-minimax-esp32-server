@@ -1070,16 +1070,22 @@
                         return;
                     }
 
-                    // 2. 如果设备未绑定，则进行绑定
+                    // 2. 如果设备未绑定，则进行绑定（使用手动添加设备API）
                     log(`自动绑定设备 ${deviceMac} 到智能体...`, 'info');
-                    log(`绑定请求URL: ${baseUrl}/xiaozhi/device/bind/${agentId}/${deviceMac}`, 'info');
+                    log(`绑定请求URL: ${baseUrl}/xiaozhi/device/manual-add`, 'info');
                     
-                    const bindResponse = await fetch(`${baseUrl}/xiaozhi/device/bind/${agentId}/${deviceMac}`, {
+                    const bindResponse = await fetch(`${baseUrl}/xiaozhi/device/manual-add`, {
                         method: 'POST',
                         headers: {
                             'Authorization': 'Bearer ' + tokenObj.token,
                             'Content-Type': 'application/json'
-                        }
+                        },
+                        body: JSON.stringify({
+                            agentId: agentId,
+                            macAddress: deviceMac,
+                            board: 'ESP32-S3-BOX-3',  // 默认设备型号
+                            appVersion: '1.0.0'        // 默认版本
+                        })
                     });
 
                     log(`绑定响应状态: ${bindResponse.status}`, 'info');
