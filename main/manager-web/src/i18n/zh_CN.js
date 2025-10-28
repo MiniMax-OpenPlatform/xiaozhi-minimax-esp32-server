@@ -984,6 +984,7 @@ export default {
   'agentTemplateManagement.createTemplate': '创建模板',
   'agentTemplateManagement.editTemplate': '编辑模板',
   'agentTemplateManagement.deleteTemplate': '删除模板',
+  'agentTemplateManagement.testPage': '测试页面',
   'agentTemplateManagement.deleteSuccess': '模板删除成功',
   'agentTemplateManagement.batchDelete': '批量删除',
   'agentTemplateManagement.batchDeleteSuccess': '批量删除成功',

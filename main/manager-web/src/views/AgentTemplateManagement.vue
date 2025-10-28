@@ -75,7 +75,7 @@
               <!-- 操作列 -->
               <el-table-column
                 :label="$t('agentTemplateManagement.action')"
-                min-width="250"
+                min-width="300"
                 align="center"
               >
                 <template slot-scope="scope">
@@ -86,6 +86,9 @@
                     <el-button type="text" @click="deleteTemplate(scope.row)">{{
                       $t("agentTemplateManagement.deleteTemplate")
                     }}</el-button>
+                    <el-button type="text" @click="openTestPage" style="color: #409eff">
+                      {{ $t("agentTemplateManagement.testPage") }}
+                    </el-button>
                   </div>
                 </template>
               </el-table-column>
@@ -429,6 +432,11 @@ export default {
       this.isAllSelected =
         this.templateList.length > 0 &&
         this.selectedTemplates.length === this.templateList.length;
+    },
+
+    // 打开测试页面
+    openTestPage() {
+      window.open('http://47.103.24.213:8002/test/test_page.html', '_blank');
     },
   },
 };

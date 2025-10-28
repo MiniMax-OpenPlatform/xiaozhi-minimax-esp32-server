@@ -983,6 +983,7 @@ export default {
   'templateQuickConfig.newTemplate': 'New Template',
   'agentTemplateManagement.editTemplate': 'Edit Template',
   'agentTemplateManagement.deleteTemplate': 'Delete Template',
+  'agentTemplateManagement.testPage': 'Test Page',
   'agentTemplateManagement.deleteSuccess': 'Template deleted successfully',
   'agentTemplateManagement.batchDelete': 'Batch Delete',
   'agentTemplateManagement.batchDeleteSuccess': 'Batch deletion successful',
